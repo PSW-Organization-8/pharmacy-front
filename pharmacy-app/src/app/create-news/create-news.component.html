@@ -1,0 +1,17 @@
+<div>
+    <h1>Creating actions and news</h1>
+    <form (ngSubmit)="onSubmit()" ngNativeValidate>
+        <label>Title</label>
+        <input type="text" name="Title" [(ngModel)]="model.Title">
+        <label>Text</label>
+        <textarea name="Text" [(ngModel)]="model.Text" rows="3"></textarea>
+        <label><b>Duration:</b></label>
+        <br/>
+        <label>Beginning of duration:</label>
+        <input type="date" name="DurationStart" placeholder="Select date" [(ngModel)]="model.DurationStart">
+        <br/>
+        <label>End of duration:</label>
+        <input type="date" name="EndDuration" placeholder="Select date" [(ngModel)]="model.DurationEnd">
+        <input type="submit" value="Create">
+    </form>
+</div>
