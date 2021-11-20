@@ -1,0 +1,20 @@
+<ul class="lista">
+    <li class="element1" *ngFor="let objection of objections">
+        <div class="card">
+            <div class="card-content">
+              <div class="content">
+                <h2>Hospital: {{objection.hospitalName}}</h2>
+                <p>Objection: {{objection.textObjection}}</p>
+                <p *ngIf="objection.textResponse != null">Response: {{objection.textResponse}}</p>
+                <div *ngIf="objection.textResponse == null">
+                  <label>Response</label>
+                  <input type="text" name="Response" [(ngModel)]="text">
+                  <div>
+                    <button class="button is-info w3-hover-green" (click)="addResponse(objection)">Send response</button>
+                  </div>    
+                </div>
+            </div>
+        </div>
+      </div>
+    </li>
+</ul>
