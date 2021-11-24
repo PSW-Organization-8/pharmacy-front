@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { pharmacyServerPort } from '../app.consts';
 import { SaveMedicationConsumptionReportService } from './save-medication-consumption-report.service';
 
 @Component({
@@ -16,7 +17,9 @@ export class SaveMedicationConsumptionReportComponent implements OnInit {
   }
   DownloadReport(){
 
-    this.service.DownloadReport().subscribe();
+    this.service.DownloadReport().subscribe((data) => {
+      this.toastr.success('Successfully created report')
+      });
   }
 
 }

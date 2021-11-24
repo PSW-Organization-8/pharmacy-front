@@ -18,6 +18,6 @@ export class SaveMedicationConsumptionReportService {
   };
 
   public DownloadReport(){
-    return this.http.get(this._url +'medicationConsumption');
+    return this.http.get(this._url +'medicationConsumption',this.httpOptions);
   }
 }

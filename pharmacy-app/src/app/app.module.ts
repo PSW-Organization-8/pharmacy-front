@@ -31,7 +31,7 @@ const routes: Routes = [
     CreateNewsComponent,
     AllObjectionsViewComponent,
     SaveMedicationConsumptionReportComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
