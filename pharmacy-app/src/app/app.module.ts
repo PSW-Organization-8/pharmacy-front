@@ -13,12 +13,14 @@ import { CommonModule } from '@angular/common';
 
 import { CreateNewsComponent } from './create-news/create-news.component';
 import { AllObjectionsViewComponent } from './all-objections-view/all-objections-view.component';
+import { SaveMedicationConsumptionReportComponent } from './save-medication-consumption-report/save-medication-consumption-report.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'createActionsAndNews', component: CreateNewsComponent},
-  { path: 'objections', component: AllObjectionsViewComponent}
+  { path: 'objections', component: AllObjectionsViewComponent},
+  { path: 'saveMedicationConsumptionReport', component: SaveMedicationConsumptionReportComponent}
 ];
 
 @NgModule({
@@ -27,8 +29,9 @@ const routes: Routes = [
     HomeComponent,
     HeaderComponent,
     CreateNewsComponent,
-    AllObjectionsViewComponent
-  ],
+    AllObjectionsViewComponent,
+    SaveMedicationConsumptionReportComponent
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
