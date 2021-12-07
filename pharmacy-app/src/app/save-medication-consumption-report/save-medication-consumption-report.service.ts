@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 import { pharmacyServerPort } from '../app.consts';
 
 
@@ -9,15 +10,18 @@ import { pharmacyServerPort } from '../app.consts';
 })
 export class SaveMedicationConsumptionReportService {
   private _url = pharmacyServerPort;
+  toastr: any;
   constructor(private http: HttpClient) { }
 
   httpOptions = {
     headers: new HttpHeaders({
-      'ApiKey':  'fds15d4fs6'
+      responseType: 'blob'
     })
   };
 
   public DownloadReport(){
-    return this.http.get(this._url +'medicationConsumption',this.httpOptions);
+    
+    return this.http.get(this._url +'medicationConsumption',{responseType:'blob'});
   }
+  
 }
