@@ -21,7 +21,10 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'createActionsAndNews', component: CreateNewsComponent},
   { path: 'objections', component: AllObjectionsViewComponent},
-  { path: 'saveMedicationConsumptionReport', component: SaveMedicationConsumptionReportComponent}
+  { path: 'saveMedicationConsumptionReport', component: SaveMedicationConsumptionReportComponent},
+  { path: 'saveMedicationConsumptionReport', component: SaveMedicationConsumptionReportComponent},
+  { path: 'notification', component: NotificationComponent},
+
 ];
 
 @NgModule({

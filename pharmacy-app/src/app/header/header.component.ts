@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Head } from 'rxjs';
+import { HeaderService } from './header.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  number:any
+  constructor(private service : HeaderService) { }
 
   ngOnInit(): void {
+    this.getNumber();
   }
 
+  getNumber(): void{
+    this.service.getNumber().subscribe(response =>{ this.number = response;});
+}
 }
