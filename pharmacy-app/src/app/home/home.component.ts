@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get(`${pharmacyServerPort}pharmacy`).subscribe((data) => {
+    this.http.get(`http://localhost:8080/pharmacy`).subscribe((data) => {
       console.log(data);
 
     })
