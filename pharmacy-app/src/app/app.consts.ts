@@ -1,3 +1,3 @@
 // Constant application variables
-
-export const pharmacyServerPort = "http://localhost:18013/api/";
+import { environment} from "src/environments/environment";
+export const pharmacyServerPort = environment.apiHost;
