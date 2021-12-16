@@ -22,7 +22,6 @@ const routes: Routes = [
   { path: 'createActionsAndNews', component: CreateNewsComponent},
   { path: 'objections', component: AllObjectionsViewComponent},
   { path: 'saveMedicationConsumptionReport', component: SaveMedicationConsumptionReportComponent},
-  { path: 'saveMedicationConsumptionReport', component: SaveMedicationConsumptionReportComponent},
   { path: 'notification', component: NotificationComponent},
 
 ];
