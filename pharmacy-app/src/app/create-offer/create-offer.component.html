@@ -1,0 +1,84 @@
+<section class="section is-medium">
+    <div class="card has-text-centered">
+    <h3><strong>Required medication</strong></h3>
+<table class="table is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>Medication name</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let medication of tender.tenderMedications">
+            <td>{{medication.medicationName}}</td>
+            <td>{{medication.quantity}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<br><br>
+<div class="card has-text-centered">
+    <h3><strong>Choose pharmacy:</strong></h3>
+    <select class="select is-round is-primitive" [(ngModel)]="selectedPharmacy">
+        <option  value="0">---Select pharmacy---</option>
+        <option *ngFor="let pharmacy of pharmacies" value="{{pharmacy.id}}">{{pharmacy.city}} {{pharmacy.adress}} {{pharmacy.adressNumber}}</option>
+    </select>
+    <button (click)="getMedication()" class="button is-success">Search inventory</button>
+</div>
+<br><br>
+<div class="card has-text-centered">
+    <h3><strong>Offered medication</strong></h3>
+    <table class="table is-hoverable is-fullwidth">
+        <thead>
+            <tr>
+                <th>Medication name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medication of medicationList; let i=index">
+                <td>{{medication.MedicationName}}</td>
+                <td>{{medication.Quantity}}</td>
+                <td>{{medication.Price}}</td>
+                <td>
+                    <button (click)="removeMedication(i)" class="button is-danger">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button (click)="sendOffer()" class="button is-success">Send offer</button>
+    <br><br>
+    </div>
+
+    
+    <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
+        <div class="modal-background" (click)="toggleModal()"></div>
+        <div class="modal-card card-backgound-color">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Choose medication for offer</p>
+            <button class="delete" aria-label="close"
+                (click)="toggleModal()"></button>
+        </header>
+    
+        <div *ngFor="let medication of availableMedication">
+            <div class="card has-text-centered">
+                <h3>Medication: {{medication.medication.name}}</h3>
+                <h3>Quantity: {{medication.quantity}}</h3>
+                <button (click)="changeOffer(medication.medication)" class="button is-success is-small is-light">Add to offer</button>
+            <div class="card has-text-centered" *ngIf="selectedMedication.id == medication.medication.id">
+                <label for="quantity">Enter quantity:</label>
+                <input class="input is-small is-light" type="number" id="quantity"  [(ngModel)]="enteredQuantity">
+                <label>Enter price:</label>
+                <input class="input is-small is-light" type="number"  [(ngModel)]="enteredPrice">
+                <button (click)="addMedication()" class="button is-success is-small">Add medication</button>
+            </div>
+            </div>
+        </div>
+    <footer class="modal-card-foot">
+        <button class="button" (click)="toggleModal()">Cancel</button>
+    </footer>
+        </div>
+</div>
+</section>
