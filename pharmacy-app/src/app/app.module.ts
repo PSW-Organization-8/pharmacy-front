@@ -15,6 +15,9 @@ import { CreateNewsComponent } from './create-news/create-news.component';
 import { AllObjectionsViewComponent } from './all-objections-view/all-objections-view.component';
 import { SaveMedicationConsumptionReportComponent } from './save-medication-consumption-report/save-medication-consumption-report.component';
 import { NotificationComponent } from './notification/notification.component';
+import { AllActiveTendersViewComponent } from './all-active-tenders-view/all-active-tenders-view.component';
+import { AllActiveTendersViewService } from './all-active-tenders-view/all-active-tenders-view.service';
+import { CreateOfferComponent } from './create-offer/create-offer.component';
 
 
 const routes: Routes = [
@@ -23,7 +26,8 @@ const routes: Routes = [
   { path: 'objections', component: AllObjectionsViewComponent},
   { path: 'saveMedicationConsumptionReport', component: SaveMedicationConsumptionReportComponent},
   { path: 'notification', component: NotificationComponent},
-
+  { path: 'allTenders', component: AllActiveTendersViewComponent},
+  { path: 'createOffer', component: CreateOfferComponent}
 ];
 
 @NgModule({
@@ -34,7 +38,9 @@ const routes: Routes = [
     CreateNewsComponent,
     AllObjectionsViewComponent,
     SaveMedicationConsumptionReportComponent,
-    NotificationComponent
+    NotificationComponent,
+    AllActiveTendersViewComponent,
+    CreateOfferComponent
     ],
   imports: [
     BrowserModule,
