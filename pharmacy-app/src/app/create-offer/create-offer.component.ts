@@ -23,7 +23,7 @@ export class CreateOfferComponent implements OnInit {
   enteredPrice: any;
 
   isModalActive: any;
-
+  isListEmpty: any;
 
   constructor(private tenderService: AllActiveTendersViewService,
     private toastr: ToastrService,
@@ -32,6 +32,7 @@ export class CreateOfferComponent implements OnInit {
       this.medicationList = new Array;
       this.isModalActive = false;
       this.selectedPharmacy = 0;
+      this.isListEmpty = true;
      }
 
 
@@ -63,6 +64,9 @@ export class CreateOfferComponent implements OnInit {
 
   removeMedication(i: number) {
     this.medicationList.splice(i, 1);
+    if(this.medicationList.length==0){
+      this.isListEmpty = true;
+    }
   }
 
   getMedication(){
@@ -81,6 +85,7 @@ export class CreateOfferComponent implements OnInit {
   addMedication(): void{
     let medication = new OfferMedication(this.selectedMedication.id, this.selectedMedication.name, this.enteredQuantity, this.enteredPrice);
     this.medicationList.push(medication);
+    this.isListEmpty = false;
   }
 
   changeOffer(id: any){

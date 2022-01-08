@@ -19,7 +19,7 @@
 <br><br>
 <div class="card has-text-centered">
     <h3><strong>Choose pharmacy:</strong></h3>
-    <select class="select is-round is-primitive" [(ngModel)]="selectedPharmacy">
+    <select class="select is-round is-primitive" [(ngModel)]="selectedPharmacy" [disabled]="!isListEmpty">
         <option  value="0">---Select pharmacy---</option>
         <option *ngFor="let pharmacy of pharmacies" value="{{pharmacy.id}}">{{pharmacy.city}} {{pharmacy.adress}} {{pharmacy.adressNumber}}</option>
     </select>
@@ -62,20 +62,21 @@
                 (click)="toggleModal()"></button>
         </header>
     
-        <div *ngFor="let medication of availableMedication">
-            <div class="card has-text-centered">
+        <div class="card has-text-centered">
+        <div class="card has-text-centered" *ngFor="let medication of availableMedication">
+           
                 <h3>Medication: {{medication.medication.name}}</h3>
                 <h3>Quantity: {{medication.quantity}}</h3>
-                <button (click)="changeOffer(medication.medication)" class="button is-success is-small is-light">Add to offer</button>
-            <div class="card has-text-centered" *ngIf="selectedMedication.id == medication.medication.id">
+                <button (click)="changeOffer(medication.medication)" class="button is-success is-small is-light">Enter quantity</button>
+            <div *ngIf="selectedMedication.id == medication.medication.id">
                 <label for="quantity">Enter quantity:</label>
                 <input class="input is-small is-light" type="number" id="quantity"  [(ngModel)]="enteredQuantity">
                 <label>Enter price:</label>
                 <input class="input is-small is-light" type="number"  [(ngModel)]="enteredPrice">
                 <button (click)="addMedication()" class="button is-success is-small">Add medication</button>
             </div>
-            </div>
         </div>
+    </div>
     <footer class="modal-card-foot">
         <button class="button" (click)="toggleModal()">Cancel</button>
     </footer>
