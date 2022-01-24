@@ -46,7 +46,7 @@ export class AllActiveTendersViewComponent implements OnInit {
     console.log(tender);
   }
   isExpirationExpired(tender: any) {
-    return new Date(tender.endDate) > this.currentDate;
+    return new Date(tender.endDate) > this.currentDate || tender.endDate==null;
   }
 
 }

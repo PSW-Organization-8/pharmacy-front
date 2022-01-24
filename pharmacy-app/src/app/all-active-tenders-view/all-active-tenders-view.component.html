@@ -21,7 +21,7 @@
                                 <td>{{tender.name}}</td>
                                 <td *ngIf="tender.endDate != null">{{tender.endDate | date:'dd.MM.yyyy HH:mm'}}</td>
                                 <td *ngIf="tender.endDate == null">Not defined</td>
-                                <td><a *ngIf="isExpirationExpired(tender)" class="button is-success" (click)="createOffers(tender)">Create offer</a></td>
+                                <td><a *ngIf="isExpirationExpired(tender)" class="button is-info" (click)="createOffers(tender)">Create offer</a></td>
                                 <div class="modal" [ngClass]="{ 'is-active' : tender.isModalActive }">
                                     <div class="modal-background" (click)="toggleModal(tender)"></div>
                                     <div class="modal-card">
