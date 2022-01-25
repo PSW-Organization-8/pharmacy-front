@@ -1,5 +1,6 @@
-<section class="section is-medium">
-    <div class="card has-text-centered">
+<div style="display: flex; justify-content: center;">
+    <div class="card has-text-centered" style="width: 24rem; margin: 1rem 2rem;">
+        <br> <br> <br> <br> 
     <h3><strong>Required medication</strong></h3>
 <table class="table is-hoverable is-fullwidth">
     <thead>
@@ -16,17 +17,24 @@
     </tbody>
 </table>
 </div>
-<br><br>
-<div class="card has-text-centered">
+<div class="card has-text-centered" style="width: 24rem; margin: 1rem 2rem;">
+    <br> <br> <br> <br> 
     <h3><strong>Choose pharmacy:</strong></h3>
     <select class="select is-round is-primitive" [(ngModel)]="selectedPharmacy" [disabled]="!isListEmpty">
         <option  value="0">---Select pharmacy---</option>
         <option *ngFor="let pharmacy of pharmacies" value="{{pharmacy.id}}">{{pharmacy.city}} {{pharmacy.adress}} {{pharmacy.adressNumber}}</option>
     </select>
-    <button (click)="getMedication()" class="button is-success">Search inventory</button>
+    <button (click)="getMedication()" class="button is-info">Search inventory</button>
+    <br> <br> <br> <br> 
+    <table class="table is-hoverable is-fullwidth">
+    <tr *ngFor="let medication of availableMedication" >
+        <td>{{medication.medication.name}} </td>    <td> {{medication.quantity}}</td>
+        <td><button (click)="changeOffer(medication)" *ngIf="medicationExists(medication.medication.id)" class="button is-small is-light">Enter quantity</button></td>
+    </tr>
+</table>
 </div>
-<br><br>
-<div class="card has-text-centered">
+<div class="card has-text-centered" style="width: 30rem; margin: 1rem 2rem; height: 50rem;">
+    <br> <br> <br> <br> 
     <h3><strong>Offered medication</strong></h3>
     <table class="table is-hoverable is-fullwidth">
         <thead>
@@ -48,38 +56,32 @@
             </tr>
         </tbody>
     </table>
-    <button (click)="sendOffer()" class="button is-success">Send offer</button>
+    <button (click)="sendOffer()" class="button is-info">Send offer</button>
     <br><br>
     </div>
 
     
     <div class="modal" [ngClass]="{ 'is-active' : isModalActive }">
         <div class="modal-background" (click)="toggleModal()"></div>
-        <div class="modal-card card-backgound-color">
+        <div class="modal-card card-backgound-color" style="width: 25rem;">
+        <div class="card has-text-centered">
         <header class="modal-card-head">
-            <p class="modal-card-title">Choose medication for offer</p>
+            <p class="modal-card-title">Add medication</p>
             <button class="delete" aria-label="close"
                 (click)="toggleModal()"></button>
         </header>
-    
-        <div class="card has-text-centered">
-        <div class="card has-text-centered" *ngFor="let medication of availableMedication">
-           
-                <h3>Medication: {{medication.medication.name}}</h3>
-                <h3>Quantity: {{medication.quantity}}</h3>
-                <button (click)="changeOffer(medication.medication)" class="button is-success is-small is-light">Enter quantity</button>
-            <div *ngIf="selectedMedication.id == medication.medication.id">
-                <label for="quantity">Enter quantity:</label>
-                <input class="input is-small is-light" type="number" id="quantity"  [(ngModel)]="enteredQuantity">
-                <label>Enter price:</label>
-                <input class="input is-small is-light" type="number"  [(ngModel)]="enteredPrice">
-                <button (click)="addMedication()" class="button is-success is-small">Add medication</button>
+            <div style="margin: 2rem;">
+                <label class="label" for="quantity">Enter quantity:</label>
+                <input class="input" type="number" id="quantity"  [(ngModel)]="enteredQuantity">
+                <br> <br>
+                <label class="label">Enter price:</label>
+                <input class="input" type="number" step="0.001" [(ngModel)]="enteredPrice">
+                <br> <br>
+                <button (click)="addMedication()" class="button is-info">Add medication</button>
             </div>
+            
         </div>
     </div>
-    <footer class="modal-card-foot">
-        <button class="button" (click)="toggleModal()">Cancel</button>
-    </footer>
-        </div>
+    
+    </div>
 </div>
-</section>
